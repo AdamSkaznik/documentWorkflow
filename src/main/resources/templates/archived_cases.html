@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <title>Archiwalne sprawy</title>
+</head>
+<body>
+<h1>Lista archiwalnych spraw</h1>
+<table>
+  <thead>
+  <tr>
+    <th>ID</th>
+    <th>Typ</th>
+    <th>Opis</th>
+    <th>Załączniki</th>
+    <th>Departament</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr th:each="case : ${cases}">
+    <td th:text="${case.id}">1</td>
+    <td th:text="${case.type}">Typ</td>
+    <td th:text="${case.description}">Opis</td>
+    <td>
+      <ul>
+        <li th:each="attachment : ${case.attachments}" th:text="${attachment.filename}">Załącznik</li>
+      </ul>
+    </td>
+    <td th:text="${case.department.name}">Departament</td>
+  </tr>
+  </tbody>
+</table>
+</body>
+</html>

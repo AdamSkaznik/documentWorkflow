@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <title>Document Management</title>
+</head>
+<body>
+<h1>Lista spraw</h1>
+<a href="/new">Dodaj nową sprawę</a>
+<table>
+  <thead>
+  <tr>
+    <th>ID</th>
+    <th>Typ</th>
+    <th>Opis</th>
+    <th>Załączniki</th>
+    <th>Akcje</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr th:each="case : ${cases}">
+    <td th:text="${case.id}">1</td>
+    <td th:text="${case.type}">Typ</td>
+    <td th:text="${case.description}">Opis</td>
+    <td>
+      <ul>
+        <li th:each="attachment : ${case.attachments}" th:text="${attachment.filename}">Załącznik</li>
+      </ul>
+    </td>
+    <td>
+      <a th:href="@{/edit/{id}(id=${case.id})}">Edytuj</a>
+    </td>
+  </tr>
+  </tbody>
+</table>
+</body>
+</html>

@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <title>Nowa sprawa</title>
+</head>
+<body>
+<h1>Dodaj nową sprawę</h1>
+<form th:action="@{/save}" th:object="${case}" method="post" enctype="multipart/form-data">
+  <label for="type">Typ</label>
+  <input type="text" id="type" th:field="*{type}"/>
+
+  <label for="description">Opis</label>
+  <input type="text" id="description" th:field="*{description}"/>
+
+  <label for="department">Departament</label>
+  <select id="department" th:field="*{department}">
+    <option th:each="department : ${departments}" th:value="${department}" th:text="${department.name}"></option>
+  </select>
+
+  <label for="files">Załączniki</label>
+  <input type="file" id="files" name="files" multiple/>
+
+  <button type="submit">Zapisz</button>
+</form>
+</body>
+</html>

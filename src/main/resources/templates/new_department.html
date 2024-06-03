@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+	<title>Nowy departament</title>
+</head>
+<body>
+<h1>Dodaj nowy departament</h1>
+<form th:action="@{/departments/save}" th:object="${department}" method="post">
+	<label for="name">Nazwa</label>
+	<input type="text" id="name" th:field="*{name}"/>
+
+	<label for="caseTag">Znacznik spraw</label>
+	<input type="text" id="caseTag" th:field="*{caseTag}"/>
+
+	<button type="submit">Zapisz</button>
+</form>
+</body>
+</html>
